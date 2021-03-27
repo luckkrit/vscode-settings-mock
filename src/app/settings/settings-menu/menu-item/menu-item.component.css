@@ -1,0 +1,34 @@
+details.menu-header > summary {
+  list-style: none;
+  padding-left: 18px;
+}
+
+details {
+  padding: 3px 0;
+}
+
+details[open] > summary {
+  font-weight: 700;
+}
+
+details > ul {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+details > ul li {
+  list-style: none;
+  padding: 3px 0;
+  cursor: default;
+}
+
+details > ul li:hover {
+  cursor: pointer;
+}
+
+summary.active,
+li.active {
+  font-weight: 700;
+  color: #eee;
+}

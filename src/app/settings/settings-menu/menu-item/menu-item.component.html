@@ -1,0 +1,19 @@
+<details [class.menu-header]="currentMenu.subMenus.length === 0">
+  <summary
+    [class.active]="isSelected === true && currentMenu.key === currentId"
+    (click)="onClick(currentMenu.key)"
+    id="{{ currentMenu.key }}"
+  >
+    {{ currentMenu.label }}
+  </summary>
+  <ul *ngIf="currentMenu.subMenus.length > 0">
+    <li
+      [class.active]="isSelected === true && subMenu.key === currentId"
+      (click)="onClick(subMenu.key)"
+      id="{{ subMenu.key }}"
+      *ngFor="let subMenu of currentMenu.subMenus"
+    >
+      {{ subMenu.label }}
+    </li>
+  </ul>
+</details>

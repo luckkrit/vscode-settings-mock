@@ -1,0 +1,75 @@
+.settings-navigation {
+  padding: 15px 5px 5px;
+  background-color: #1e1e1e;
+}
+
+.settings-search-panel input {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background-color: #3c3c3c;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  display: inline-block;
+  color: #aeaeae;
+}
+
+.settings-search-panel input[placeholder] {
+  color: #a5a5a5;
+}
+
+.settings-search-panel input:focus {
+  outline: dodgerblue solid 1px;
+}
+
+.clear-search {
+  display: inline-block;
+  position: absolute;
+  right: 30px;
+  height: 28px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #a5a5a5;
+}
+
+.clear-search:hover {
+  cursor: pointer;
+}
+
+.clear-search.active {
+  font-weight: 700;
+  color: #eee;
+}
+
+.settings-tabs-panel {
+  padding: 15px 0;
+}
+
+.settings-tabs-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid dimgrey;
+}
+
+.settings-tabs-panel li {
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.settings-tabs-panel li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.settings-tabs-panel li.tab-selected {
+  border-bottom: 1px solid #eee;
+  color: #eee;
+}
+
+.top-black-border {
+  border-top: 3px solid black;
+  height: 6px;
+  margin: 0 auto;
+}

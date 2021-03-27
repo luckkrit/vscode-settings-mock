@@ -1,0 +1,33 @@
+<div class="container settings-navigation fixed-top">
+  <div class="settings-search-panel">
+    <input
+      type="text"
+      placeholder="Search settings"
+      maxlength="70"
+      #search
+      (keyup)="
+        search.value.length > 0
+          ? (isTypingSearch = true)
+          : (isTypingSearch = false)
+      "
+    />
+    <div
+      class="clear-search"
+      (click)="search.value = ''; isTypingSearch = false"
+      [class.active]="isTypingSearch"
+    >
+      X
+    </div>
+  </div>
+  <div class="settings-tabs-panel">
+    <ul>
+      <li [class.tab-selected]="isSelectUser">
+        <a href="#" (click)="selectUser(true)">User</a>
+      </li>
+      <li [class.tab-selected]="!isSelectUser">
+        <a href="#" (click)="selectUser(false)">Workspace</a>
+      </li>
+    </ul>
+  </div>
+  <div [class.top-black-border]="isShowBlackBorder"></div>
+</div>

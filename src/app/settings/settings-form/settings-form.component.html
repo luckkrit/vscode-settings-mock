@@ -1,0 +1,2 @@
+<app-form-item *ngFor="let config of configs" [config]="config" [menus]="settings.menu"
+               (OnSelected)="onSelected($event)"></app-form-item>

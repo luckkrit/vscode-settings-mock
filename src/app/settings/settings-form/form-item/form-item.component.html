@@ -1,0 +1,119 @@
+<section id="{{ config.key }}" [class.hilight]="isHilight">
+  <h4>
+    {{ config.menuLabel }}
+  </h4>
+  <ul>
+    <li *ngFor="let config2 of config.items">
+      <div
+        class="settings-item"
+        (click)="settingClick(config2.key)"
+        [class.selected]="config2.key === currentSetting && isSelected"
+      >
+        <div
+          class="settings-container"
+          [class.modify]="isChanged && config2.key === currentSetting"
+        >
+          <div
+            class="settings-description"
+            [innerHTML]="getSubMenuTitle(config2) + config2.label"
+          ></div>
+          <div *ngIf="isBoolean(config2)">
+            <label class="checkbox">
+              <span class="checkbox__input">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  [checked]="config2.value.defaultValue === true"
+                  #checkSetting
+                  (change)="
+                    changeValue(
+                      checkSetting.checked,
+                      config2.value.defaultValue
+                    )
+                  "
+                />
+                <span class="checkbox__control">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      d="M1.73 12.91l6.37 6.37L22.79 4.59"
+                    />
+                  </svg>
+                </span>
+              </span>
+              <span
+                class="settings-description-details"
+                [innerHTML]="config2.description"
+              ></span>
+            </label>
+          </div>
+          <div *ngIf="isArray(config2)">
+            <div
+              class="settings-description-details"
+              [innerHTML]="config2.description"
+            ></div>
+            <div class="dropdown" [class.dropdown-outline]="isShowDropdown">
+              <div class="dropdown-panel" (click)="showDropdown()">
+                <div class="dropdown-title">
+                  {{ config2.value.defaultValue }}
+                </div>
+                <div class="dropdown-arrow-down">&#5167;</div>
+              </div>
+              <ul
+                class="dropdown-options"
+                [class.show]="isShowDropdown"
+                [class.dropdown-outline]="isShowDropdown"
+              >
+                <li
+                  *ngFor="let v of config2.value.values"
+                  [class.default]="v === config2.value.defaultValue"
+                >
+                  {{ v }}
+                </li>
+                <li *ngIf="config2.value.valueDescriptions.length === 0"></li>
+                <li *ngFor="let vd of config2.value.valueDescriptions"></li>
+              </ul>
+            </div>
+          </div>
+          <div *ngIf="isNumber(config2)">
+            <div
+              class="settings-description-details"
+              [innerHTML]="config2.description"
+            ></div>
+            <input
+              type="text"
+              class="settings-number-input"
+              [value]="config2.value.defaultValue"
+              #numberSetting
+              (change)="
+                changeValue(numberSetting.value, config2.value.defaultValue)
+              "
+            />
+          </div>
+          <div *ngIf="isString(config2)">
+            <div
+              class="settings-description-details"
+              [innerHTML]="config2.description"
+            ></div>
+            <input
+              type="text"
+              class="settings-text-input"
+              [value]="config2.value.defaultValue"
+              #textSetting
+              (change)="
+                changeValue(textSetting.value, config2.value.defaultValue)
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
